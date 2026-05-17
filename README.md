@@ -58,16 +58,24 @@ Soak:    150 – 200 °C
 Reflow:  250 °C peak
 ```
 
+## Usage
+
+1. Power on — the display shows `READY` and the oven waits.
+2. If the oven is above 50 °C the display shows `TOO HOT`; wait for it to cool.
+3. Press and hold the start button (pin 7 to GND) to begin the reflow cycle.
+4. The buzzer sounds and the display shows the active stage, live temperature, and elapsed time.
+5. At the end of the cool-down phase the buzzer sounds again and the oven returns to `READY`.
+
 ## State Machine
 
 ```
-IDLE → PREHEAT → SOAK → REFLOW → COOL → COMPLETE → IDLE
-                                              ↑
-         TOO_HOT (oven above 50°C at start) ──┘
-         ERROR   (thermocouple fault)        ──┘
+READY → PREHEAT → SOAK → REFLOW → COOL → COMPLETE → READY
+                                               ↑
+          TOO_HOT (oven above 50°C at start) ──┘
+          ERROR   (thermocouple fault)        ──┘
 ```
 
-The controller starts a reflow cycle automatically when powered on and the oven temperature is below 50 °C. If the oven is too warm at startup it waits in `TOO_HOT` until it cools.
+The cycle only starts when the start button is pressed while the display shows `READY`. If the oven is too warm at startup it waits in `TOO HOT` until it cools.
 
 ## Display
 
