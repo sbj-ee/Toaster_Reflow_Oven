@@ -385,7 +385,7 @@ void loop()
 
 const char* stateString() {
   switch (reflowState) {
-    case REFLOW_STATE_IDLE:     return "IDLE";
+    case REFLOW_STATE_IDLE:     return "READY";
     case REFLOW_STATE_PREHEAT:  return "PREHEAT";
     case REFLOW_STATE_SOAK:     return "SOAK";
     case REFLOW_STATE_REFLOW:   return "REFLOW";
