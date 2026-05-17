@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+![Toaster reflow oven](Screenshot%20from%202018-05-11%2007-03-27.png)
+
 ## Project type
 
 Arduino sketch (`Reflow_Oven.ino`). There is no Makefile or CLI build — compile and upload via the Arduino IDE or `arduino-cli`. Do not attempt to run `make`, `cmake`, or similar tools.
