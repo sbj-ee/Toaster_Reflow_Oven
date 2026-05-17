@@ -412,7 +412,7 @@ void updateDisplay() {
     display.print(buf);
   }
 
-  // bottom row: current temp / setpoint in larger text
+  // middle: current temp / setpoint in larger text
   display.setTextSize(2);
   display.setCursor(0, 16);
   if (isnan(input)) {
@@ -423,6 +423,26 @@ void updateDisplay() {
   display.print("/");
   display.print((int)setpoint);
   display.print("C");
+
+  // temperature progress bar (rows 38–47)
+  // fills left-to-right from 0 °C to TEMPERATURE_REFLOW_MAX
+  const int barY     = 38;
+  const int barH     = 10;
+  const int innerW   = 126;   // 128 - 2px border
+
+  display.drawRect(0, barY, 128, barH, SSD1306_WHITE);
+
+  if (!isnan(input) && input > 0) {
+    int fill = (int)((input / TEMPERATURE_REFLOW_MAX) * innerW);
+    if (fill > innerW) fill = innerW;
+    if (fill > 0) display.fillRect(1, barY + 1, fill, barH - 2, SSD1306_WHITE);
+  }
+
+  // stage-boundary ticks (INVERSE punches through fill so they stay visible)
+  int xSoakMin = 1 + (int)((float)TEMPERATURE_SOAK_MIN / TEMPERATURE_REFLOW_MAX * innerW);
+  int xSoakMax = 1 + (int)((float)TEMPERATURE_SOAK_MAX / TEMPERATURE_REFLOW_MAX * innerW);
+  display.drawFastVLine(xSoakMin, barY + 1, barH - 2, SSD1306_INVERSE);
+  display.drawFastVLine(xSoakMax, barY + 1, barH - 2, SSD1306_INVERSE);
 
   display.display();
 }

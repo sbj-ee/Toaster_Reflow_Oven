@@ -108,15 +108,17 @@ The cycle only starts when the start button is pressed while the display shows `
 
 ## Display
 
-The SSD1306 shows a two-row layout updated every second:
+The SSD1306 shows a three-section layout updated every second:
 
 ```
 PREHEAT         45s
 185/200C
+[==========|------|---------]
 ```
 
 - Top row: current state (left) and elapsed seconds (right, only while running)
-- Bottom row: measured temperature / setpoint in °C. Shows `ERR` if the thermocouple is disconnected.
+- Middle row: measured temperature / setpoint in °C. Shows `ERR` if the thermocouple is disconnected.
+- Bottom bar: temperature progress from 0 °C to the reflow peak (250 °C). Two tick marks divide the bar at the soak-min (100 °C) and soak-max (150 °C) boundaries. The fill grows as the oven heats and shrinks during cooling.
 
 ## Serial Output
 
