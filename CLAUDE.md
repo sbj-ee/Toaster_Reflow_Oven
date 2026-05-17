@@ -23,9 +23,9 @@ The SSR is driven by time-proportional (window) PID at the bottom of `loop()`. T
 
 All I/O is tightly coupled to fixed pin numbers at the top of the file. Any pin changes must be reflected there. The SSD1306 display is on I2C (A4/A5); its address is `OLED_ADDRESS` (0x3C — change if your module uses 0x3D).
 
-## Known remaining issue
+## Start button
 
-The oven auto-starts a reflow cycle as soon as it powers up and the temperature is below 50 °C — there is no start button. Adding one requires a new digital input pin and a check in `REFLOW_STATE_IDLE`.
+Pin 7 is the start button (`INPUT_PULLUP`, active low — connect to GND). The reflow cycle only begins when the button is held while the oven is in `REFLOW_STATE_IDLE` and below 50 °C.
 
 ## Solder profile
 

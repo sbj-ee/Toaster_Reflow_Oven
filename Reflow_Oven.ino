@@ -74,8 +74,9 @@ const int reflowLedPin  = 12;
 const int coolingLedPin = 13;
 const int errorLedPin   = 8;
 
-const int buzzerPin     = 9;
-const int ssrPin        = 6;
+const int startButtonPin = 7;
+const int buzzerPin      = 9;
+const int ssrPin         = 6;
 
 // PID control variables
 double setpoint;
@@ -120,6 +121,7 @@ void setup() {
   pinMode(reflowLedPin, OUTPUT);
   pinMode(coolingLedPin, OUTPUT);
   pinMode(errorLedPin, OUTPUT);
+  pinMode(startButtonPin, INPUT_PULLUP);
   pinMode(buzzerPin, OUTPUT);
   pinMode(ssrPin, OUTPUT);
 
@@ -206,7 +208,7 @@ void loop()
       {
         reflowState = REFLOW_STATE_TOO_HOT;
       }
-      else
+      else if (digitalRead(startButtonPin) == LOW)
       {
         // start reflow process
 

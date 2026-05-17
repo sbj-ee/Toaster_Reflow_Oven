@@ -23,6 +23,7 @@ Arduino PID controller for a DIY SMD solder reflow oven built from a cheap toast
 | 4 | MAX31855 CS |
 | 5 | MAX31855 CLK |
 | 6 | SSR |
+| 7 | Start button (to GND, no resistor needed) |
 | 8 | Error LED |
 | 9 | Buzzer |
 | 10 | Preheat LED |
