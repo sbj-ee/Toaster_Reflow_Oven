@@ -33,6 +33,35 @@ Arduino PID controller for a DIY SMD solder reflow oven built from a cheap toast
 | A4 (SDA) | SSD1306 display |
 | A5 (SCL) | SSD1306 display |
 
+## Wiring
+
+```
+                       ┌──────────────────────┐
+     MAX31855 DO  ─────┤ D3              3V3  ├──── MAX31855 VCC
+     MAX31855 CS  ─────┤ D4              GND  ├──── Common GND
+    MAX31855 CLK  ─────┤ D5                   │
+            SSR   ─────┤ D6               A4  ├──── SSD1306 SDA
+   Start button   ─────┤ D7               A5  ├──── SSD1306 SCL
+      Error LED   ─────┤ D8              VCC  ├──── SSD1306 VCC
+         Buzzer   ─────┤ D9                   │
+     Preheat LED  ─────┤ D10                  │
+        Soak LED  ─────┤ D11                  │
+      Reflow LED  ─────┤ D12                  │
+     Cooling LED  ─────┤ D13                  │
+                       └──────────────────────┘
+                             Arduino Uno
+```
+
+**LEDs** — each LED requires a 220 Ω current-limiting resistor in series to GND.
+
+**Start button** — one leg to D7, other leg to GND. No resistor needed (`INPUT_PULLUP`).
+
+**MAX31855** — VCC to 3V3, GND to GND, DO→D3, CS→D4, CLK→D5. Connect the K-type thermocouple to the screw terminals.
+
+**SSD1306** — VCC to 5V (or 3V3 depending on your module), GND to GND, SDA→A4, SCL→A5. Default I2C address is `0x3C`; change `OLED_ADDRESS` in the sketch if yours is `0x3D`.
+
+**SSR** — control input to D6 and GND. The SSR switches mains power to the oven heating element; follow all appropriate safety precautions when wiring mains voltage.
+
 ## Libraries Required
 
 Install all four via Arduino Library Manager:
