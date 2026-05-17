@@ -2,7 +2,7 @@
 
 Arduino PID controller for a DIY SMD solder reflow oven built from a cheap toaster oven.
 
-![Toaster reflow oven](Screenshot%20from%202018-05-11%2007-03-27.png)
+![Toaster reflow oven](reflow_oven.png)
 
 ## Hardware
 

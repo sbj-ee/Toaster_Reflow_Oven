@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-![Toaster reflow oven](Screenshot%20from%202018-05-11%2007-03-27.png)
+![Toaster reflow oven](reflow_oven.png)
 
 ## Project type
 
