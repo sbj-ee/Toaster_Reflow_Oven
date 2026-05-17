@@ -106,9 +106,9 @@ PID reflowOvenPID(&input, &output, &setpoint, kp, ki, kd, DIRECT);
 // initialize thermocouple
 Adafruit_MAX31855 thermocouple(MAXCLK, MAXCS, MAXDO);
 
-// initialize display (128x32, I2C address 0x3C)
+// initialize display (128x64, I2C address 0x3C)
 #define OLED_ADDRESS 0x3C
-Adafruit_SSD1306 display(128, 32, &Wire, -1);
+Adafruit_SSD1306 display(128, 64, &Wire, -1);
 
 
 

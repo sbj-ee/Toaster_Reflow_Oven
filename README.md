@@ -11,7 +11,7 @@ Arduino PID controller for a DIY SMD solder reflow oven built from a cheap toast
 | Arduino Uno (or compatible) | Main controller |
 | Adafruit MAX31855 thermocouple breakout | K-type thermocouple, SPI |
 | Solid State Relay (SSR) | Controls oven heating element |
-| SSD1306 OLED display | 128×32, I2C |
+| SSD1306 OLED display | 128×64, I2C |
 | Passive buzzer | Startup beeps and completion alert |
 | 5× LEDs | Status indicators for each reflow stage |
 

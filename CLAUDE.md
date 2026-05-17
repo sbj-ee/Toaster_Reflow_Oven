@@ -21,7 +21,7 @@ The SSR is driven by time-proportional (window) PID at the bottom of `loop()`. T
 
 ## Hardware dependencies
 
-All I/O is tightly coupled to fixed pin numbers at the top of the file. Any pin changes must be reflected there. The SSD1306 display is on I2C (A4/A5); its address is `OLED_ADDRESS` (0x3C — change if your module uses 0x3D).
+All I/O is tightly coupled to fixed pin numbers at the top of the file. Any pin changes must be reflected there. The SSD1306 display (128×64) is on I2C (A4/A5); its address is `OLED_ADDRESS` (0x3C — change if your module uses 0x3D).
 
 ## Start button
 
