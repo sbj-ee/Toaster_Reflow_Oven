@@ -114,11 +114,13 @@ The SSD1306 shows a three-section layout updated every second:
 PREHEAT         45s
 185/200C
 [==========|------|---------]
+  PRE        SOAK      RFLO
 ```
 
 - Top row: current state (left) and elapsed seconds (right, only while running)
 - Middle row: measured temperature / setpoint in °C. Shows `ERR` if the thermocouple is disconnected.
-- Bottom bar: temperature progress from 0 °C to the reflow peak (250 °C). Two tick marks divide the bar at the soak-min (100 °C) and soak-max (150 °C) boundaries. The fill grows as the oven heats and shrinks during cooling.
+- Bar: temperature progress from 0 °C to the reflow peak (250 °C). Two tick marks divide the bar at the soak-min (100 °C) and soak-max (150 °C) boundaries. The fill grows as the oven heats and shrinks during cooling.
+- Labels: `PRE` / `SOAK` / `RFLO` centred under each zone.
 
 ## Serial Output
 

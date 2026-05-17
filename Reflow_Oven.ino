@@ -444,6 +444,13 @@ void updateDisplay() {
   display.drawFastVLine(xSoakMin, barY + 1, barH - 2, SSD1306_INVERSE);
   display.drawFastVLine(xSoakMax, barY + 1, barH - 2, SSD1306_INVERSE);
 
+  // stage labels centred in each zone below the bar
+  display.setTextSize(1);
+  int labelY = barY + barH + 2;
+  display.setCursor(xSoakMin / 2 - 9,                labelY); display.print("PRE");
+  display.setCursor((xSoakMin + xSoakMax) / 2 - 12,  labelY); display.print("SOAK");
+  display.setCursor((xSoakMax + 128) / 2 - 12,       labelY); display.print("RFLO");
+
   display.display();
 }
 
