@@ -444,30 +444,33 @@ void updateDisplay() {
   display.drawFastVLine(xSoakMin, barY + 1, barH - 2, SSD1306_INVERSE);
   display.drawFastVLine(xSoakMax, barY + 1, barH - 2, SSD1306_INVERSE);
 
-  // stage labels centred in each zone; active stage is inverted (white bg, black text)
+  // four stage labels in equal quarters (32 px each); active state inverted
   display.setTextSize(1);
   int labelY = barY + barH + 2;
-  int xPre  = xSoakMin / 2 - 9;
-  int xSoak = (xSoakMin + xSoakMax) / 2 - 12;
-  int xRflo = (xSoakMax + 128) / 2 - 12;
 
   if (reflowState == REFLOW_STATE_PREHEAT) {
-    display.fillRect(xPre - 1,  labelY - 1, 20, 10, SSD1306_WHITE);
+    display.fillRect(6,  labelY - 1, 20, 10, SSD1306_WHITE);
     display.setTextColor(SSD1306_BLACK);
   } else { display.setTextColor(SSD1306_WHITE); }
-  display.setCursor(xPre, labelY);  display.print("PRE");
+  display.setCursor(7,   labelY); display.print("PRE");
 
   if (reflowState == REFLOW_STATE_SOAK) {
-    display.fillRect(xSoak - 1, labelY - 1, 26, 10, SSD1306_WHITE);
+    display.fillRect(35, labelY - 1, 26, 10, SSD1306_WHITE);
     display.setTextColor(SSD1306_BLACK);
   } else { display.setTextColor(SSD1306_WHITE); }
-  display.setCursor(xSoak, labelY); display.print("SOAK");
+  display.setCursor(36,  labelY); display.print("SOAK");
 
   if (reflowState == REFLOW_STATE_REFLOW) {
-    display.fillRect(xRflo - 1, labelY - 1, 26, 10, SSD1306_WHITE);
+    display.fillRect(67, labelY - 1, 26, 10, SSD1306_WHITE);
     display.setTextColor(SSD1306_BLACK);
   } else { display.setTextColor(SSD1306_WHITE); }
-  display.setCursor(xRflo, labelY); display.print("RFLO");
+  display.setCursor(68,  labelY); display.print("RFLO");
+
+  if (reflowState == REFLOW_STATE_COOL) {
+    display.fillRect(99, labelY - 1, 26, 10, SSD1306_WHITE);
+    display.setTextColor(SSD1306_BLACK);
+  } else { display.setTextColor(SSD1306_WHITE); }
+  display.setCursor(100, labelY); display.print("COOL");
 
   display.setTextColor(SSD1306_WHITE);
 
